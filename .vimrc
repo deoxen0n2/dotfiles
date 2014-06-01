@@ -12,7 +12,7 @@ set showcmd
 set hlsearch
 set incsearch
 " Clear hiligh of search matches
-nnoremap <silent> <C-l> :<C-u>nohlsearch<CR><C-l>
+nnoremap <silent> L :<C-u>nohlsearch<CR><C-l>
 
 " Softtabs, 2 spaces
 set tabstop=2
