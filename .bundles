@@ -1,0 +1,12 @@
+ctrlp.vim
+syntastic
+vim-bundler
+vim-coffee-script
+vim-commentary
+vim-endwise
+vim-fugitive
+vim-rails
+vim-ruby
+vim-surround
+vim-textobj-entire
+vim-textobj-user
