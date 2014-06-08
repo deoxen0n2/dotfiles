@@ -8,11 +8,15 @@ filetype plugin indent on
 set ruler
 set showcmd
 
+set history=200
+
 " Search
 set hlsearch
 set incsearch
 " Clear hiligh of search matches
 nnoremap <silent> L :<C-u>nohlsearch<CR><C-l>
+" Count matches
+nnoremap <silent> <leader>c :%s///gn<CR>
 
 " Softtabs, 2 spaces
 set tabstop=2
@@ -49,6 +53,10 @@ set numberwidth=5
 set splitbelow
 set splitright
 
+" Make it better for scrolling command history
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+
 nnoremap <silent> [b :bprevious<CR>
 nnoremap <silent> ]b :bnext<CR>
 nnoremap <silent> [B :bfirst<CR>
@@ -60,5 +68,7 @@ nnoremap <silent> <C-k> <C-w>k
 nnoremap <silent> <C-h> <C-w>h
 nnoremap <silent> <C-l> <C-w>l
 
+" Set Ex command autocompletion to be more like bash shell
+set wildmode=longest,list
 
 runtime macros/matchit.vim
