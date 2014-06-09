@@ -13,6 +13,8 @@ set history=200
 " Search
 set hlsearch
 set incsearch
+set ignorecase
+set smartcase
 " Clear hiligh of search matches
 nnoremap <silent> L :<C-u>nohlsearch<CR><C-l>
 " Count matches
