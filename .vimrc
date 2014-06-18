@@ -74,3 +74,9 @@ nnoremap <silent> <C-l> <C-w>l
 set wildmode=longest,list
 
 runtime macros/matchit.vim
+
+" RSpec.vim mappings
+map <Leader>t :call RunCurrentSpecFile()<CR>
+map <Leader>s :call RunNearestSpec()<CR>
+map <Leader>l :call RunLastSpec()<CR>
+map <Leader>a :call RunAllSpecs()<CR>

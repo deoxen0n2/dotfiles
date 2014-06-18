@@ -6,6 +6,7 @@ vim-commentary
 vim-endwise
 vim-fugitive
 vim-rails
+vim-rspec
 vim-ruby
 vim-surround
 vim-textobj-entire
