@@ -7,6 +7,7 @@ filetype plugin indent on
 
 set ruler
 set showcmd
+set cursorline
 
 set history=200
 
@@ -26,7 +27,7 @@ set shiftwidth=2
 set shiftround
 set expandtab
 
-colorscheme molokai
+colorscheme github
 let g:molokai_original = 1
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
@@ -80,3 +81,7 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
+
+" EasyMotion mappings
+nmap <Leader>w <Plug>(easymotion-bd-w)
+nmap s <Plug>(easymotion-sl)
