@@ -3,8 +3,10 @@ syntastic
 vim-bundler
 vim-coffee-script
 vim-commentary
+vim-easymotion
 vim-endwise
 vim-fugitive
+vim-multiple-cursors
 vim-rails
 vim-rspec
 vim-ruby
