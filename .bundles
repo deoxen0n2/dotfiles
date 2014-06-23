@@ -13,3 +13,4 @@ vim-ruby
 vim-surround
 vim-textobj-entire
 vim-textobj-user
+vim-unimpaired
