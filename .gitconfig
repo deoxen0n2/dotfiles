@@ -3,7 +3,8 @@
 	email = deoxen0n2@gmail.com
 	username = deoxen0n2
 [merge]
-	tool = meld
+	tool = vimdiff
+	ff = only
 [alias]
 	c = commit
 	s = status
@@ -13,6 +14,12 @@
 	ds = diff --staged
 	ai = add -i
 	aa = add .
+  pullff = pull --ff-only
+  dh1 = diff HEAD~1
+  l = "!source ~/.githelpers && pretty_git_log"
+  la = !git l --all
+  r = !git l -20
+  ra = !git r --all
 [color]
 	ui = true
 [core]
