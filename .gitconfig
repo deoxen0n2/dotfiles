@@ -1,0 +1,28 @@
+[user]
+	name = Sarun Siriphantnon
+	email = deoxen0n2@gmail.com
+	username = deoxen0n2
+[merge]
+	tool = meld
+[alias]
+	c = commit
+	s = status
+	b = branch
+	co = checkout
+	d = difftool
+	ds = diff --staged
+	ai = add -i
+	aa = add .
+[color]
+	ui = true
+[core]
+	editor = vim
+	excludesfile = ~/.gitignore
+[diff]
+	tool = vimdiff
+[difftool]
+	prompt = false
+[include]
+	path = .gitconfig.local
+[push]
+	default = current
