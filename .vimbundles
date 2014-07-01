@@ -2,8 +2,8 @@ ctrlp.vim
 syntastic
 vim-bundler
 vim-coffee-script
+vim-colors-solarized
 vim-commentary
-vim-easymotion
 vim-endwise
 vim-fugitive
 vim-multiple-cursors
