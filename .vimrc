@@ -27,8 +27,11 @@ set shiftwidth=2
 set shiftround
 set expandtab
 
-colorscheme github
-let g:molokai_original = 1
+" Change leader key
+let mapleader=","
+
+set background=dark
+colorscheme solarized
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
@@ -42,10 +45,10 @@ if executable('ag')
   " ag is fast enough that CtrlP doesn't need to cache
   let g:ctrlp_use_caching = 0
   " Bind K to grep word under cursor
-  nnoremap K :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
+  nnoremap <leader>k :grep! "\b<C-R><C-W>\b"<CR>:cw<CR>
 else
   " Bind K to grep word under cursor
-  nnoremap K :grep! -r "\b<C-R><C-W>\b" .<CR>:cw<CR>
+  nnoremap <leader>k :grep! -r "\b<C-R><C-W>\b" .<CR>:cw<CR>
 endif
 
 " Number
@@ -60,16 +63,18 @@ set splitright
 cnoremap <C-p> <Up>
 cnoremap <C-n> <Down>
 
-nnoremap <silent> [b :bprevious<CR>
-nnoremap <silent> ]b :bnext<CR>
-nnoremap <silent> [B :bfirst<CR>
-nnoremap <silent> ]B :blast<CR>
-
 " Quicker window movement
 nnoremap <silent> <C-j> <C-w>j
 nnoremap <silent> <C-k> <C-w>k
 nnoremap <silent> <C-h> <C-w>h
 nnoremap <silent> <C-l> <C-w>l
+
+" Quicker up-down movement
+nnoremap <silent> J 10j
+nnoremap <silent> K 10k
+
+" Quicker buffer movement
+nnoremap <leader><leader> <C-^>
 
 " Set Ex command autocompletion to be more like bash shell
 set wildmode=longest,list
@@ -81,7 +86,3 @@ map <Leader>t :call RunCurrentSpecFile()<CR>
 map <Leader>s :call RunNearestSpec()<CR>
 map <Leader>l :call RunLastSpec()<CR>
 map <Leader>a :call RunAllSpecs()<CR>
-
-" EasyMotion mappings
-nmap <Leader>w <Plug>(easymotion-bd-w)
-nmap s <Plug>(easymotion-sl)
