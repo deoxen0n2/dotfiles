@@ -20,6 +20,7 @@
   la = !git l --all
   r = !git l -20
   ra = !git r --all
+	ap = add -p
 [color]
 	ui = true
 [core]
