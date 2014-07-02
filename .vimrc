@@ -5,6 +5,9 @@ execute pathogen#infect()
 syntax on
 filetype plugin indent on
 
+" Change leader key
+let mapleader=","
+
 set ruler
 set showcmd
 set cursorline
@@ -26,9 +29,6 @@ set tabstop=2
 set shiftwidth=2
 set shiftround
 set expandtab
-
-" Change leader key
-let mapleader=","
 
 set background=dark
 colorscheme solarized
