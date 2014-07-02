@@ -70,8 +70,8 @@ nnoremap <silent> <C-h> <C-w>h
 nnoremap <silent> <C-l> <C-w>l
 
 " Quicker up-down movement
-nnoremap <silent> J 10j
-nnoremap <silent> K 10k
+noremap <silent> J 10j
+noremap <silent> K 10k
 
 " Quicker buffer movement
 nnoremap <leader><leader> <C-^>
