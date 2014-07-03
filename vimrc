@@ -76,6 +76,10 @@ noremap <silent> K 10k
 " Quicker buffer movement
 nnoremap <leader><leader> <C-^>
 
+" Quicker resize split width
+nnoremap <silent> <Leader>+ :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
+nnoremap <silent> <Leader>- :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
+
 " Set Ex command autocompletion to be more like bash shell
 set wildmode=longest,list
 
