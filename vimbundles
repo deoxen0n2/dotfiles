@@ -1,5 +1,6 @@
 ctrlp.vim
 syntastic
+vim-airline
 vim-bundler
 vim-coffee-script
 vim-colors-solarized
