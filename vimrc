@@ -79,6 +79,8 @@ nnoremap <leader><leader> <C-^>
 " Quicker resize split width
 nnoremap <silent> <Leader>+ :exe "vertical resize " . (winwidth(0) * 3/2)<CR>
 nnoremap <silent> <Leader>- :exe "vertical resize " . (winwidth(0) * 2/3)<CR>
+nnoremap <silent> <Leader>0 :exe "resize " . (winheight(0) * 3/2)<CR>
+nnoremap <silent> <Leader>9 :exe "resize " . (winheight(0) * 2/3)<CR>
 
 " Set Ex command autocompletion to be more like bash shell
 set wildmode=longest,list
@@ -86,10 +88,53 @@ set wildmode=longest,list
 runtime macros/matchit.vim
 
 " RSpec.vim mappings
-map <Leader>t :call RunCurrentSpecFile()<CR>
-map <Leader>s :call RunNearestSpec()<CR>
-map <Leader>l :call RunLastSpec()<CR>
-map <Leader>a :call RunAllSpecs()<CR>
+" map <Leader>t :call RunCurrentSpecFile()<CR>
+" map <Leader>s :call RunNearestSpec()<CR>
+" map <Leader>l :call RunLastSpec()<CR>
+" map <Leader>a :call RunAllSpecs()<CR>
+
+" Mocha (Node.js)
+map <Leader>t :!NODE_ENV=test mocha %<CR>
+map <Leader>n :!node %<CR>
+
+" Rust
+set hidden
+let g:racer_cmd = "/Users/deoxen0n2/.cargo/bin/racer"
+let $RUST_SRC_PATH = "/usr/local/src/rust/src"
+
+" SQL
+" let g:sql_type_default = 'pgsql'
 
 " Airline
 set laststatus=2
+
+" Syntastic
+let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
+let g:syntastic_typescript_checkers = [ 'tsuquyomi' ]
+let g:syntastic_javascript_checkers = [ 'eslint' ]
+
+let g:UltiSnipsExpandTrigger = '<tab>'
+let g:UltiSnipsJumpForwardTrigger = '<tab>'
+let g:UltiSnipsJumpBackwardTrigger = '<s-tab>'
+
+set backspace=indent,eol,start
+:autocmd FileType scss setlocal iskeyword+=\-
+" autocmd FileType typescript setlocal balloonexpr=tsuquyomi@balloonexpr()
+autocmd FileType typescript nnoremap <buffer> <Leader>d : <C-u>echo tsuquyomi#hint()<CR>
+
+" Nerdtree
+" let g:NERDTreeHijackNetrw=0
+autocmd StdinReadPre * let s:std_in=1
+" autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
+" autocmd vimenter * NERDTree
+map <C-x> :NERDTreeToggle<CR>
+
+" JSX
+let g:jsx_ext_required = 0
+
+" NVIM Python
+let g:python2_host_prog = '/usr/local/bin/python'
+let g:python3_host_prog = '/usr/local/bin/python3'
+
+" Utils
+nnoremap ,z :let @*=expand("%")<CR>

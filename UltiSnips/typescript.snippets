@@ -1,0 +1,69 @@
+# global !p
+# from snippet_helpers import *
+# endglobal
+
+snippet /**
+/**
+ * ${0:${VISUAL}}
+ */
+endsnippet
+
+snippet par "@param {...}"
+@param {${1:type}} ${0:name description}
+endsnippet
+
+snippet ret "@returns {...}"
+@returns {${1:type}} ${0}
+endsnippet
+
+snippet cl "console.log(...)" b
+console.log($0)
+endsnippet
+
+snippet fun "function with dynamic docblock" b
+`!p
+# Currently Ultisnips does not support dynamic tabstops, so we cannot add
+# tabstops to the datatype for these param tags until that feature is added.
+def formatTag(argument):
+	return " * @param {{}} {0}".format(argument)
+
+arguments = t[2].split(',')
+arguments = [argument.strip() for argument in arguments if argument]
+
+if len(arguments):
+  tags = map(formatTag, arguments)
+  snip.rv = "/**"
+  for tag in tags:
+    snip += tag
+  snip += ' */'
+  snip += ''
+else:
+  snip.rv = ''
+`function ${1} (${2}) {
+  ${0:${VISUAL}}
+}
+endsnippet
+
+snippet /impas/ "import * as module from module" !rb
+import * as $1 from '$1'
+endsnippet
+
+snippet /class/ "Creates a new class" !rb
+export class $1 {
+  constructor ($2) {
+		$0
+	}
+}
+endsnippet
+
+snippet /interf?a?c?e?/ "Creates a new interface" !rb
+export interface $1 {
+	$0
+}
+endsnippet
+
+snippet /.then/ "Chain the promise with then" !rb
+.then(($1) => {
+  $0
+})
+endsnippet
