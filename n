@@ -1,0 +1,11 @@
+#!/usr/bin/env bash
+
+PROJECT_NAME=$1
+
+cp -r ~/templates/n "${PROJECT_NAME}"
+
+cd "${PROJECT_NAME}"
+
+yarn add -D babel-cli babel-preset-env babel-register eslint eslint-config-standard eslint-plugin-import eslint-plugin-node eslint-plugin-promise eslint-plugin-standard sinon tap-spec tape
+
+cd -

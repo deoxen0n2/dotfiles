@@ -1,0 +1,23 @@
+{
+  "name": "n",
+  "version": "1.0.0",
+  "description": "Description",
+  "main": "index.js",
+  "repository": "https://github.com/your-username/your-project-name",
+  "author": "Your name",
+  "license": "MIT",
+  "main": "./lib/index.js",
+  "scripts": {
+    "start": "yarn compile && node ./lib",
+    "compile": "babel src -d lib",
+    "compile-watch": "babel -w src -d lib",
+    "prepublish": "yarn compile",
+    "test": "NODE_ENV=test tape -r babel-register test/unit/{**/,}*.js | tap-spec",
+    "test-integration": "NODE_ENV=test tape -r babel-register test/integration/{**/,}*.js | tap-spec"
+  },
+  "files": [
+    "lib/"
+  ],
+  "dependencies": {},
+  "devDependencies": {}
+}
