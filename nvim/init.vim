@@ -30,6 +30,7 @@ NeoBundle 'hauleth/blame.vim'
 NeoBundle 'jiangmiao/auto-pairs'
 NeoBundle 'junegunn/goyo.vim'
 NeoBundle 'kien/ctrlp.vim'
+NeoBundle 'kylef/apiblueprint.vim'
 " NeoBundle 'leafgarland/typescript-vim'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'mhartington/oceanic-next'
@@ -40,6 +41,7 @@ NeoBundle 'mxw/vim-jsx'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'Quramy/tsuquyomi'
 NeoBundle "reedes/vim-colors-pencil"
+NeoBundle 'mdempsky/gocode', { 'rtp': 'nvim/' }
 NeoBundle 'Shougo/vimproc.vim', {
 \ 'build' : {
 \     'windows' : 'tools\\update-dll-mingw',
