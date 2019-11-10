@@ -21,27 +21,35 @@ call neobundle#begin(expand('$HOME/.config/nvim/bundle'))
 
 NeoBundle 'altercation/vim-colors-solarized'
 NeoBundle 'airblade/vim-gitgutter'
+NeoBundle 'ayu-theme/ayu-vim'
+NeoBundle 'vim-airline/vim-airline-themes'
 NeoBundle 'cespare/vim-toml'
+NeoBundle 'challenger-deep-theme/vim'
 NeoBundle 'christoomey/vim-tmux-navigator'
 NeoBundle 'chriskempson/base16-vim'
+NeoBundle 'dense-analysis/ale'
 NeoBundle 'fatih/vim-go.git'
 NeoBundle 'fxn/vim-monochrome'
+NeoBundle 'HerringtonDarkholme/yats.vim'
 NeoBundle 'hauleth/blame.vim'
 NeoBundle 'jiangmiao/auto-pairs'
+NeoBundle 'joshdick/onedark.vim'
 NeoBundle 'junegunn/goyo.vim'
 NeoBundle 'kien/ctrlp.vim'
 NeoBundle 'kylef/apiblueprint.vim'
-" NeoBundle 'leafgarland/typescript-vim'
+NeoBundle 'leafgarland/typescript-vim'
+NeoBundle 'lifepillar/pgsql.vim'
 NeoBundle 'majutsushi/tagbar'
 NeoBundle 'mhartington/oceanic-next'
-" NeoBundle 'mhartington/nvim-typescript'
+NeoBundle 'mhartington/nvim-typescript', { 'build': './install.sh' }
 NeoBundle 'moll/vim-node'
 NeoBundle 'mtscout6/syntastic-local-eslint.vim'
 NeoBundle 'mxw/vim-jsx'
+NeoBundle 'nightsense/carbonized'
 NeoBundle 'pangloss/vim-javascript'
 NeoBundle 'Quramy/tsuquyomi'
 NeoBundle "reedes/vim-colors-pencil"
-NeoBundle 'mdempsky/gocode', { 'rtp': 'nvim/' }
+" NeoBundle 'mdempsky/gocode', { 'rtp': 'nvim/' }
 NeoBundle 'Shougo/vimproc.vim', {
 \ 'build' : {
 \     'windows' : 'tools\\update-dll-mingw',
@@ -51,7 +59,7 @@ NeoBundle 'Shougo/vimproc.vim', {
 \     'unix' : 'gmake',
 \    },
 \ }
-NeoBundle 'Shougo/deoplete.nvim'
+" NeoBundle 'Shougo/deoplete.nvim'
 NeoBundle 'SirVer/ultisnips'
 NeoBundle 'scrooloose/nerdtree'
 NeoBundle 'shime/vim-livedown'
@@ -63,19 +71,28 @@ NeoBundle 'tpope/vim-unimpaired'
 NeoBundle 'vim-airline/vim-airline'
 NeoBundle 'vim-syntastic/syntastic'
 NeoBundle 'zaki/zazen'
-NeoBundle 'zchee/deoplete-go', {'build': {'unix': 'make'}}
+NeoBundle 'deoplete-plugins/deoplete-go', {'build': {'unix': 'make'}}
+NeoBundle 'rhysd/vim-crystal'
+NeoBundle 'sebdah/vim-delve'
+NeoBundle 'cocopon/iceberg.vim'
+NeoBundle 'yosssi/vim-ace'
+" NeoBundle 'zchee/deoplete-go', {'build': {'unix': 'make'}}
 
 call neobundle#end()
 
 NeoBundleCheck
 
+call plug#begin('~/.local/share/nvim/plugged')
+Plug 'neoclide/coc.nvim', {'do': 'yarn install --frozen-lockfile'}
+call plug#end()
+
 " End NeoBundle Settings---------------------------
 
-set clipboard+=unnamedplus
-
 if (has("termguicolors"))
- set termguicolors
+  set termguicolors
 endif
+
+set clipboard+=unnamedplus
 
 syntax enable
 
@@ -111,19 +128,27 @@ set expandtab
 " For Go
 autocmd FileType go setlocal tabstop=8 shiftwidth=8
 " autocmd FileType go map <C-[> :GoDoc<CR>
-
+let g:go_def_mode='gopls'
+let g:go_info_mode='gopls'
 " let g:solarized_termcolors=256
 " let g:solarized_termcolors=16
 " set t_Co=256
 " set termguicolors
 set background=dark
 " colorscheme solarized
-colorscheme OceanicNext
+" colorscheme OceanicNext
+" colorscheme iceberg
+let ayucolor="mirage"
+colorscheme ayu
+" colorscheme onedark
 " colorscheme grb256
 " colorscheme base16-solarized-dark
 " colorscheme NeoSolarized
 " colorscheme monochrome
 " colorscheme zazen
+
+" ctrlp
+nnoremap <leader>. :CtrlPTag<cr>
 
 " Use The Silver Searcher https://github.com/ggreer/the_silver_searcher
 if executable('ag')
@@ -189,6 +214,7 @@ runtime macros/matchit.vim
 autocmd FileType javascript nnoremap <buffer> <Leader>s : !yarn start %<CR>
 autocmd FileType javascript map <Leader>t :!NODE_ENV=test yarn test %<CR>
 autocmd FileType javascript map <Leader>n :!node %<CR>
+autocmd FileType typescript map <Leader>t :!NODE_ENV=test yarn test %<CR>
 
 " Rust
 set hidden
@@ -200,6 +226,7 @@ let $RUST_SRC_PATH = "/usr/local/src/rust/src"
 
 " Airline
 set laststatus=2
+let g:airline_theme='ayu_mirage'
 
 " Syntastic
 let g:syntastic_html_tidy_ignore_errors=[" proprietary attribute \"ng-"]
@@ -223,6 +250,10 @@ autocmd FileType markdown nnoremap <buffer> <Leader>x : .w !bash<CR>
 " Nerdtree
 " let g:NERDTreeHijackNetrw=0
 autocmd StdinReadPre * let s:std_in=1
+" let NERDTreeQuitOnOpen = 1
+" autocmd bufenter * if (winnr(“$”) == 1 && exists(“b:NERDTreeType”) && b:NERDTreeType == “primary”) | q | endif
+let NERDTreeMinimalUI = 1
+let NERDTreeDirArrows = 1
 " autocmd VimEnter * if argc() == 0 && !exists("s:std_in") | NERDTree | endif
 " autocmd vimenter * NERDTree
 map <C-x> :NERDTreeToggle<CR>
@@ -232,8 +263,7 @@ let g:jsx_ext_required = 0
 
 " NVIM Python
 let g:python2_host_prog = '/usr/local/bin/python'
-" let g:python3_host_prog = '/usr/bin/python3.5'
-let g:python3_host_prog = '/usr/bin/python3.6'
+let g:python3_host_prog = '/usr/bin/python3'
 
 " Utils
 nnoremap ,z :let @*=expand("%")<CR>
@@ -246,10 +276,16 @@ let g:deoplete#file#enable_buffer_path = 1
 let g:go_doc_keywordprg_enabled = 0
 let g:go_fmt_command = "goimports"
 let g:go_auto_sameids = 1
-autocmd FileType go nnoremap <Leader>t <Plug>(go-test)
+" autocmd FileType go nnoremap <Leader>t <Plug>(go-test)
 
 " vim-livedown
 autocmd FileType markdown nnoremap gm :LivedownToggle<CR>
+autocmd FileType markdown :setlocal spell spelllang=en_us
+
+" vim-delve
+autocmd FileType go nnoremap <Leader>b :DlvToggleBreakpoint<CR>
+autocmd FileType go nnoremap <Leader>d :DlvDebug<CR>
+autocmd FileType go nnoremap <Leader>t :DlvTest<CR>
 
 " tagbar
 nmap <F8> :TagbarToggle<CR>
@@ -284,3 +320,8 @@ let g:tagbar_width = 80
 
 " cp will give current file relative path.
 :nmap cp :let @+ = expand("%")<CR>
+
+" pgsql.vim
+let g:sql_type_default = 'pgsql'
+
+nnoremap < ct,
