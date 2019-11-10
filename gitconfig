@@ -1,5 +1,5 @@
 [user]
-	name = Sarun Siriphantnon
+	name = Saran Siriphantnon
 	email = deoxen0n2@gmail.com
 	username = deoxen0n2
 [merge]
@@ -11,6 +11,7 @@
 	b = branch
 	co = checkout
 	d = difftool
+	diffs = difftool --staged
 	ds = diff --staged
 	ai = add -i
 	aa = add .
@@ -21,16 +22,29 @@
   r = !git l -20
   ra = !git r --all
 	ap = add -p
+  spp = "!git s | fpp"
 [color]
 	ui = true
+  pager = true
 [core]
-	editor = vim
+	editor = nvim
 	excludesfile = ~/.gitignore
+	compression = 0
 [diff]
-	tool = vimdiff
+	tool = kdiff3
+	guitool = kdiff3
 [difftool]
-	prompt = false
+	prompt = true
+[mergetool]
+  prompt = true
+[mergetool "vimdiff"]
+  ; cmd = nvim -d $BASE $LOCAL $REMOTE $MERGED -c '$wincmd w' -c 'wincmd J'
+  cmd = nvim -d $BASE $LOCAL
 [include]
 	path = .gitconfig.local
 [push]
 	default = current
+[url "git@github.com:"]
+	insteadOf = https://github.com/
+[url "git@bitbucket.org:"]
+	insteadOf = https://bitbucket.org/
